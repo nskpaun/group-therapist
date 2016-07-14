@@ -16,7 +16,7 @@ class ClockContainer extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return {nextHappyHour: state.nextHappyHour};
+  return {nextHappyHour: state.home.nextHappyHour};
 };
 const mapDispatchToProps = (dispatch) => {
   return {

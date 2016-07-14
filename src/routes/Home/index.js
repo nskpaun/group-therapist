@@ -9,23 +9,25 @@ export default (store) => ({
     require.ensure([], (require) => {
       /*  Webpack - use require callback to define
           dependencies for bundling   */
-      const Home = require('../../containers/HomeContainer').default
+      const Home = require('../../components/Home').default
       // const reducer = require('./modules/counter').default
       //
       // /*  Add the reducer to the store on key 'counter'  */
-      // const reducer = (previousState, action) => {
-      //   console.log('nspaun' + ' reducing');
-      //   switch (action.type) {
-      //     case 'SET_HAPPY_HOUR':
-      //       return {
-      //         ...previousState,
-      //         nextHappyHour: previousState.nextHappyHour + 1
-      //       };
-      //     default:
-      //       return state;
-      //   }
-      // }
-      // injectReducer(store, { key: 'home', reducer })
+      const initialState = {
+        nextHappyHour: 1,
+      }
+      const reducer = (previousState = initialState, action) => {
+        switch (action.type) {
+          case 'SET_HAPPY_HOUR':
+            return {
+              ...previousState,
+              nextHappyHour: previousState.nextHappyHour + 1
+            };
+          default:
+            return {nextHappyHour: 1};
+        }
+      }
+      injectReducer(store, { key: 'home', reducer })
 
       /*  Return getComponent   */
       cb(null, Home)
