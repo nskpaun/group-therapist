@@ -1,5 +1,6 @@
 import { injectReducer } from '../../store/reducers'
 import { combineReducers } from 'redux'
+import {reducer as formReducer} from 'redux-form';
 
 export default (store) => ({
   path: 'counter',
@@ -27,7 +28,7 @@ export default (store) => ({
       const onCall = (previousState = 'Eithan', action) => {
         switch (action.type) {
           case 'SET_ONCALL':
-            return action.value;
+            return action.onCall;
           default:
             return previousState;
         }
@@ -35,8 +36,8 @@ export default (store) => ({
 
       const reducer = combineReducers({nextHappyHour, onCall})
 
-
-      injectReducer(store, { key: 'home', reducer })
+      injectReducer(store, { key: 'home', reducer });
+      injectReducer(store, {key: 'form', reducer: formReducer});
 
       /*  Return getComponent   */
       cb(null, Home)
