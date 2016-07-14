@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import ClockContainer from '../containers/ClockContainer';
+import HostContainer from '../containers/HostContainer';
 
 const propTypes = {
 };
@@ -13,6 +14,7 @@ class Home extends Component {
       <div>
         This is the dumb wrapper for home
         <ClockContainer/>
+        <HostContainer/>
       </div>
     );
   }
