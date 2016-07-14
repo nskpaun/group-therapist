@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { reduxForm } from 'redux-form';
 
-export const fields = [];
+export const fields = ['newOnCall'];
 
 const validate = (values) => {
   const errors = {};
@@ -16,12 +16,18 @@ const propTypes = {
 export class HostContainerForm extends Component {
   render() {
     const {
-      fields: {},
-      handleSubmit
+      fields: {newOnCall},
+      handleSubmit,
+      onSetNewOnCall,
     } = this.props;
 
     return (
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit(onSetNewOnCall)}>
+        <div>
+          <label>New On Call</label>
+          <input type="text" {...newOnCall}/>
+        </div>
+        <button type="submit">Submit</button>
       </form>
     );
   }
