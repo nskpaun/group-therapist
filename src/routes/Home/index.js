@@ -11,7 +11,7 @@ export default (store) => ({
       // const reducer = require('./modules/counter').default
       //
       const eventsReducer = require('../../modules/Events').default;
-      injectReducer(store, { key: 'host', reducer: eventsReducer });
+      injectReducer(store, { key: 'events', reducer: eventsReducer });
 
       /*  Return getComponent   */
       const Home = require('../../components/Home').default

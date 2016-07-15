@@ -11,7 +11,7 @@ class EventContainer extends Component {
     const {event, isFetching, onClick} = this.props;
     return (
       <div onClick={onClick}>
-        {'The Current on call is: ' + event}<br/>
+        {'The Current on call is: ' + event.hostName}<br/>
         {'isFetching: ' + isFetching}
       </div>
     );

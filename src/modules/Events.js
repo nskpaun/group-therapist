@@ -1,4 +1,4 @@
-import { fetchEvents } from '../cloud/lambdas';
+import { fetchEvents as fetchCloudEvents } from '../cloud/lambdas';
 
 // Constants
 
@@ -17,7 +17,7 @@ function receiveEvents(events) {
 
 export function fetchEvents(dispatch) {
   dispatch(requestEvents());
-  fetchEvents((data, err) => {
+  fetchCloudEvents((data, err) => {
     if (err) {
       console.log("[fetchEvents] bummer...");
     } else {
@@ -46,13 +46,31 @@ export default function(state = defaultState, action) {
         isFetching: true,
       }
     case RECIEVE:
-      console.log(action.hostName);
+      let events = parseEvents(action.events);
       return {
         ...state,
         isFetching: false,
+        allEvents: events,
+        currentEvent: determineCurrentEvent(events),
       }
 
   default:
     return state;
   }
+}
+
+// Reducer Helpers
+
+function parseEvents(cloudEvents) {
+  return cloudEvents.Items.map((cloudEvent) => {
+    return {
+      hostName: cloudEvent.host_name,
+      name: cloudEvent.name,
+      time: cloudEvent.ts,
+    };
+  });
+}
+
+function determineCurrentEvent(events) {
+  return events[0];
 }
