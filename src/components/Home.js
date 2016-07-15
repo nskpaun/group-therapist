@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 import ClockContainer from '../containers/ClockContainer';
 import HostContainer from '../containers/HostContainer';
 
-import { fetchData } from '../cloud/lambdas';
+import { fetchData, fetchEventData } from '../cloud/lambdas';
 
 const propTypes = {
 };
@@ -15,6 +15,11 @@ class Home extends Component {
   componentWillMount() {
     fetchData(data => {
       console.log('getting data in home');
+      console.log(data);
+    });
+
+    fetchEventData(data => {
+      console.log('getting event data in home');
       console.log(data);
     });
   }

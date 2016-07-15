@@ -10,29 +10,53 @@ const LAMBDA = new AWS.Lambda({region: 'us-west-2'});
 
 const FunctionName = 'dispatchGTRequest';
 
-const GET_PARAMS = {
+const GET_WIDGET_PARAMS = {
   FunctionName,
   Payload: JSON.stringify({
     "operation": "list",
   })
 };
 
-let data = null;
+const GET_EVENT_PARAMS = {
+  FunctionName,
+  Payload: JSON.stringify({
+    "operation": "events",
+  })
+};
+
+let widgetData = null;
+let eventData = null;
 
 export const fetchData = function(callback) {
-  LAMBDA.invoke(GET_PARAMS, function(err, data) {
+  LAMBDA.invoke(GET_WIDGET_PARAMS, function(err, data) {
     if (err) {
       console.log(err, err.stack);
     }
     else {
-      data = JSON.parse(data.Payload)
-      callback(data, err);
+      widgetData = JSON.parse(data.Payload)
+      callback(widgetData, err);
     }
   });
 };
 
 export const readData = function() {
-  return data;
+  return widgetData;
+};
+
+export const fetchEventData = function(callback) {
+  LAMBDA.invoke(GET_EVENT_PARAMS, function(err, data) {
+    if (err) {
+      console.log(err, err.stack);
+    }
+    else {
+      eventData = JSON.parse(data.Payload)
+      callback(eventData, err);
+    }
+  });
+};
+
+export const readEventData = function() {
+  return eventData;
 };
 
 export const publishScore = function({personId, gameId}, callback) {
