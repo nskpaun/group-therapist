@@ -8,11 +8,12 @@ AWS.config.credentials = new AWS.CognitoIdentityCredentials({
 
 const LAMBDA = new AWS.Lambda({region: 'us-west-2'});
 
+const FunctionName = 'dispatchGTRequest';
+
 const GET_PARAMS = {
-  FunctionName: 'dispatchGTRequest',
+  FunctionName,
   Payload: JSON.stringify({
     "operation": "list",
-    "payload": {"TableName": "HappyHour"}
   })
 };
 
@@ -25,7 +26,7 @@ export const fetchData = function(callback) {
     }
     else {
       data = JSON.parse(data.Payload)
-      callback(data);
+      callback(data, err);
     }
   });
 };
@@ -33,3 +34,22 @@ export const fetchData = function(callback) {
 export const readData = function() {
   return data;
 };
+
+export const publishScore = function({personId, gameId}, callback) {
+  const params = {
+    FunctionName,
+    Payload: JSON.stringify({
+      "operation": "score",
+      "payload": {"person_id": personId, "game_id": gameId}
+    })
+  };
+  LAMBDA.invoke(params, function(err, data) {
+    if (err) {
+      console.log(err, err.stack);
+    }
+    else {
+      data = JSON.parse(data.Payload)
+      callback(data, err);
+    }
+  });
+}
