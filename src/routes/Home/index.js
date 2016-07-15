@@ -11,7 +11,9 @@ export default (store) => ({
       // const reducer = require('./modules/counter').default
       //
       const eventsReducer = require('../../modules/Events').default;
+      const widgetsReducer = require('../../modules/Widgets').default;
       injectReducer(store, { key: 'events', reducer: eventsReducer });
+      injectReducer(store, { key: 'widgets', reducer: widgetsReducer });
 
       /*  Return getComponent   */
       const Home = require('../../components/Home').default

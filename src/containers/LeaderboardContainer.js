@@ -1,17 +1,16 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { fetchEvents } from '../modules/Events';
+import { fetchWidgets } from '../modules/Widgets';
 
 const propTypes = {
 };
 
-class EventContainer extends Component {
+class LeaderboardContainer extends Component {
   render() {
-    const {event, isFetching, onClick} = this.props;
+    const {widgets, isFetching, onClick} = this.props;
     return (
-      <div style={{background: 'blue'}} onClick={onClick}>
-        {'The Current on call is: ' + event.hostName}<br/>
+      <div style={{background: 'red'}} onClick={onClick}>
         {'isFetching: ' + isFetching}
       </div>
     );
@@ -20,20 +19,20 @@ class EventContainer extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    event: state.events.currentEvent,
-    isFetching: state.events.isFetching,
+    widgets: state.widgets,
+    isFetching: state.widgets.isFetching,
   };
 };
 const mapDispatchToProps = (dispatch) => {
   return {
     onClick: () => {
-      dispatch(fetchEvents);
+      dispatch(fetchWidgets);
     }
   };
 };
 
-EventContainer.propTypes = propTypes;
+LeaderboardContainer.propTypes = propTypes;
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(EventContainer);
+)(LeaderboardContainer);

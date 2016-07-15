@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import EventContainer from '../containers/EventContainer';
+import LeaderboardContainer from '../containers/LeaderboardContainer';
 
 const propTypes = {
 };
@@ -12,6 +13,7 @@ class Home extends Component {
     return (
       <div>
         <EventContainer/>
+        <LeaderboardContainer/>
       </div>
     );
   }
