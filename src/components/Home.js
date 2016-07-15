@@ -24,8 +24,6 @@ class Home extends Component {
   render() {
     return (
       <div>
-        This is the dumb wrapper for home
-        <ClockContainer/>
         <HostContainer/>
       </div>
     );
