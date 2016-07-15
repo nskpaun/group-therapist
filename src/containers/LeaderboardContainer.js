@@ -13,9 +13,9 @@ class LeaderboardContainer extends Component {
     const {widgets, isFetching, onClick} = this.props;
 
     const leaderBoards = widgets ? widgets.map(widget =>
-      <GameLeaderBoard widget={widget}/>
+      <GameLeaderBoard key={widget.gameId} widget={widget}/>
     ) : [];
-    
+
     return (
       <div>
         <div style={{background: 'red'}} onClick={onClick}>
@@ -29,7 +29,7 @@ class LeaderboardContainer extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    widgets: state.widgets.widgets,
+    widgets: state.widgets.allWidgets,
     isFetching: state.widgets.isFetching,
   };
 };

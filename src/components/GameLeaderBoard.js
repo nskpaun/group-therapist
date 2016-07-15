@@ -4,7 +4,7 @@ import { BarChart } from 'react-d3-components';
 const propTypes = {
 };
 
-class GameLeaderBoard extends Component {
+class GameLeaderboard extends Component {
   render() {
     const {widget} = this.props;
 
@@ -27,5 +27,5 @@ class GameLeaderBoard extends Component {
   }
 }
 
-GameLeaderBoard.propTypes = propTypes;
-export default GameLeaderBoard;
+GameLeaderboard.propTypes = propTypes;
+export default GameLeaderboard;

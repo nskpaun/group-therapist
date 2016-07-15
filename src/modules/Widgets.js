@@ -3,7 +3,7 @@ import { fetchWidgets as fetchCloudWidgets } from '../cloud/lambdas';
 // Constants
 
 const REQUEST = 'group-therapist/widgets/REQUEST';
-const RECIEVE = 'group-therapist/widgets/RECIEVE';
+const RECEIVE = 'group-therapist/widgets/RECEIVE';
 
 // Action Creators
 
@@ -12,7 +12,7 @@ function request() {
 }
 
 function receive(widgets) {
-  return { type: RECIEVE, widgets };
+  return { type: RECEIVE, widgets };
 }
 
 export function fetchWidgets(dispatch) {
@@ -29,7 +29,7 @@ export function fetchWidgets(dispatch) {
 // Reducer
 
 export const defaultState = {
-  widgets: [],
+  allWidgets: [],
   isFetching: false,
 };
 
@@ -40,12 +40,12 @@ export default function(state = defaultState, action) {
         ...state,
         isFetching: true,
       }
-    case RECIEVE:
-      let widgets = parseWidgets(action.widgets);
+    case RECEIVE:
+      let allWidgets = parseWidgets(action.widgets);
       return {
         ...state,
         isFetching: false,
-        widgets
+        allWidgets
       }
 
   default:

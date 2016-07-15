@@ -3,7 +3,7 @@ import { fetchEvents as fetchCloudEvents } from '../cloud/lambdas';
 // Constants
 
 const REQUEST = 'group-therapist/events/REQUEST';
-const RECIEVE = 'group-therapist/events/RECIEVE';
+const RECEIVE = 'group-therapist/events/RECEIVE';
 
 // Action Creators
 
@@ -12,7 +12,7 @@ function requestEvents() {
 }
 
 function receiveEvents(events) {
-  return { type: RECIEVE, events };
+  return { type: RECEIVE, events };
 }
 
 export function fetchEvents(dispatch) {
@@ -45,7 +45,7 @@ export default function(state = defaultState, action) {
         ...state,
         isFetching: true,
       }
-    case RECIEVE:
+    case RECEIVE:
       let events = parseEvents(action.events);
       return {
         ...state,
