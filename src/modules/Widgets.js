@@ -56,7 +56,7 @@ export default function(state = defaultState, action) {
 // Reducer Helpers
 
 function parseWidgets(cloudWidgets) {
-  return cloudWidgets.Items.map((cloudWidget) => {
+  return cloudWidgets.map((cloudWidget) => {
     return cloudWidget;
   });
 }

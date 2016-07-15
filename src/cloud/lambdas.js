@@ -27,7 +27,7 @@ const GET_EVENT_PARAMS = {
 let widgetData = null;
 let eventsData = null;
 
-export const fetchData = function(callback) {
+export const fetchWidgets = function(callback) {
   LAMBDA.invoke(GET_WIDGET_PARAMS, function(err, data) {
     if (err) {
       callback(data, err);
