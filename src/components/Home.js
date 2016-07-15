@@ -2,29 +2,16 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import ClockContainer from '../containers/ClockContainer';
-import HostContainer from '../containers/HostContainer';
-
-import { fetchData } from '../cloud/lambdas';
+import EventContainer from '../containers/EventContainer';
 
 const propTypes = {
 };
 
 class Home extends Component {
-
-  componentWillMount() {
-    fetchData(data => {
-      console.log('getting data in home');
-      console.log(data);
-    });
-  }
-
-
-
   render() {
     return (
       <div>
-        <HostContainer/>
+        <EventContainer/>
       </div>
     );
   }

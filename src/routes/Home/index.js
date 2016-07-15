@@ -10,8 +10,8 @@ export default (store) => ({
           dependencies for bundling   */
       // const reducer = require('./modules/counter').default
       //
-      const hostReducer = require('../../modules/Host').default;
-      injectReducer(store, { key: 'host', reducer: hostReducer });
+      const eventsReducer = require('../../modules/Events').default;
+      injectReducer(store, { key: 'host', reducer: eventsReducer });
 
       /*  Return getComponent   */
       const Home = require('../../components/Home').default

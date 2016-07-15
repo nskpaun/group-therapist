@@ -21,7 +21,7 @@ let data = null;
 export const fetchData = function(callback) {
   LAMBDA.invoke(GET_PARAMS, function(err, data) {
     if (err) {
-      console.log(err, err.stack);
+      callback(data, err);
     }
     else {
       data = JSON.parse(data.Payload)
