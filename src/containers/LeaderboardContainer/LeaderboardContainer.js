@@ -1,9 +1,10 @@
 import React, { Component, PropTypes } from 'react';
-import GameLeaderBoard from '../components/GameLeaderBoard';
-
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { fetchWidgets } from '../modules/Widgets';
+import { fetchWidgets } from 'modules/Widgets';
+
+import styles from './styles.scss'
+import GameLeaderboard from 'components/GameLeaderboard';
 
 const propTypes = {
 };
@@ -13,7 +14,7 @@ class LeaderboardContainer extends Component {
     const {widgets, isFetching, onClick} = this.props;
 
     const leaderBoards = widgets ? widgets.map(widget =>
-      <GameLeaderBoard key={widget.gameId} widget={widget}/>
+      <GameLeaderboard key={widget.gameId} widget={widget}/>
     ) : [];
 
     return (

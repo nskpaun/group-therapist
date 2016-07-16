@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import { fetchEvents } from 'modules/Events';
 import styles from './styles.scss'
 import Timer from 'components/Timer';
+import Host from 'components/Host';
 
 const propTypes = {
 };
@@ -14,8 +15,7 @@ class EventContainer extends Component {
     return (
       <div className={styles.mainContainer} onClick={onClick}>
         <Timer goal={event.time}/>
-        {'The Current on call is: ' + event.hostName}<br/>
-        {'isFetching: ' + isFetching}
+        <Host name={event.hostName}/>
       </div>
     );
   }
