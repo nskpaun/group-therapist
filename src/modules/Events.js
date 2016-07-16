@@ -66,7 +66,7 @@ function parseEvents(cloudEvents) {
     return {
       hostName: cloudEvent.host_name,
       name: cloudEvent.name,
-      time: cloudEvent.ts,
+      time: cloudEvent.timestamp,
     };
   });
 }

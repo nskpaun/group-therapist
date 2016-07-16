@@ -1,7 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { fetchEvents } from '../modules/Events';
+import { fetchEvents } from 'modules/Events';
+import styles from './styles.scss'
+import Timer from 'components/Timer';
 
 const propTypes = {
 };
@@ -10,7 +12,8 @@ class EventContainer extends Component {
   render() {
     const {event, isFetching, onClick} = this.props;
     return (
-      <div style={{background: 'blue'}} onClick={onClick}>
+      <div className={styles.mainContainer} onClick={onClick}>
+        <Timer goal={event.time}/>
         {'The Current on call is: ' + event.hostName}<br/>
         {'isFetching: ' + isFetching}
       </div>
