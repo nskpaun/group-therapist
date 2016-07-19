@@ -1,4 +1,29 @@
 .mainContainer {
   flex: 1;
-  background: yellow;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.innerContainer {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+}
+
+.digitContainer {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.digitValue {
+  font-size: 60px;
+}
+
+.digitTitle {
+  font-size: 17px;
 }
