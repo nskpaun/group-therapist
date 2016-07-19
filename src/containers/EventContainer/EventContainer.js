@@ -14,14 +14,16 @@ class EventContainer extends Component {
     const {event, isFetching, onClick} = this.props;
     return (
       <div className={styles.mainContainer} onClick={onClick}>
-        <div className={styles.timerContainer}>
-          <p className={styles.eventName}>
-            {event.name}
-          </p>
-          <Timer goal={event.time}/>
-        </div>
         <div className={styles.hostContainer}>
-          <Host name={event.hostName}/>
+          <div className={styles.hostInner}>
+            <p className={styles.eventName}>
+              {event.name}
+            </p>
+            <Host name={event.hostName}/>
+          </div>
+        </div>
+        <div className={styles.timerContainer}>
+          <Timer goal={event.time}/>
         </div>
       </div>
     );

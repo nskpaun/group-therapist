@@ -8,7 +8,7 @@ class Host extends Component {
   render() {
     return (
       <div className={styles.mainContainer}>
-        {this.props.name}
+        by {this.props.name}
       </div>
     );
   }

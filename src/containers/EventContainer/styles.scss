@@ -1,5 +1,5 @@
 .mainContainer {
-  padding: 0px;
+  padding: 30px 0px;
   display: flex;
   flex-flow: row nowrap;
 }
@@ -16,9 +16,18 @@
 .hostContainer {
   flex: 1;
   display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+}
+
+.hostInner {
+  flex: 1 0 500px;
+  display: flex;
   flex-flow: column nowrap;
+  margin: 0 50px;
 }
 
 .eventName {
   font-size: 60px;
+  margin: 0;
 }
