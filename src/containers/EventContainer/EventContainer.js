@@ -14,8 +14,15 @@ class EventContainer extends Component {
     const {event, isFetching, onClick} = this.props;
     return (
       <div className={styles.mainContainer} onClick={onClick}>
-        <Timer goal={event.time}/>
-        <Host name={event.hostName}/>
+        <div className={styles.timerContainer}>
+          <p className={styles.eventName}>
+            {event.name}
+          </p>
+          <Timer goal={event.time}/>
+        </div>
+        <div className={styles.hostContainer}>
+          <Host name={event.hostName}/>
+        </div>
       </div>
     );
   }
@@ -27,6 +34,7 @@ const mapStateToProps = (state) => {
     isFetching: state.events.isFetching,
   };
 };
+
 const mapDispatchToProps = (dispatch) => {
   return {
     onClick: () => {

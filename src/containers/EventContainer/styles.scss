@@ -3,3 +3,22 @@
   display: flex;
   flex-flow: row nowrap;
 }
+
+.timerContainer {
+  flex: 1;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.hostContainer {
+  flex: 1;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.eventName {
+  font-size: 60px;
+}
