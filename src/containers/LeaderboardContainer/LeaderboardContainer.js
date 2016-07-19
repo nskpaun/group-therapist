@@ -19,10 +19,10 @@ class LeaderboardContainer extends Component {
 
     return (
       <div>
-        <div style={{background: 'red'}} onClick={onClick}>
-          {'isFetching Widgets: ' + isFetching}
+        <div className={styles.mainContainer} onClick={onClick}>
+          {leaderBoards}
+          click me
         </div>
-        {leaderBoards}
       </div>
     );
   }
