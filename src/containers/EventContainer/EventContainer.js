@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { fetchEvents } from 'modules/Events';
+import { fetchEvents, fetchEventsIfNeeded } from 'modules/Events';
 import styles from './styles.scss'
 import Timer from 'components/Timer';
 import Host from 'components/Host';
@@ -10,10 +10,15 @@ const propTypes = {
 };
 
 class EventContainer extends Component {
+
+  componentDidMount() {
+    this.props.fetchEventsIfNeeded();
+  }
+
   render() {
     const {event, isFetching, onClick} = this.props;
     return (
-      <div className={styles.mainContainer} onClick={onClick}>
+      <div className={styles.mainContainer}>
         <div className={styles.hostContainer}>
           <div className={styles.hostInner}>
             <p className={styles.eventName}>
@@ -39,9 +44,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onClick: () => {
-      dispatch(fetchEvents);
-    }
+    fetchEventsIfNeeded: () => {
+      dispatch(fetchEventsIfNeeded);
+    },
   };
 };
 

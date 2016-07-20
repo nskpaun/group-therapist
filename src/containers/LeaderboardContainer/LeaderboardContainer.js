@@ -1,28 +1,32 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { fetchWidgets } from 'modules/Widgets';
+import { fetchWidgetsIfNeeded } from 'modules/Widgets';
 
-import styles from './styles.scss'
 import GameLeaderboard from 'components/GameLeaderboard';
+
+import styles from './styles.scss';
 
 const propTypes = {
 };
 
 class LeaderboardContainer extends Component {
+
+  componentDidMount() {
+    this.props.fetchWidgetsIfNeeded();
+  }
   render() {
     const {widgets, isFetching, onClick} = this.props;
 
     const leaderBoards = widgets ? widgets.map(widget =>
-      <GameLeaderboard key={widget.gameId} widget={widget}/>
+      <div className={styles.widget} key={widget.gameId}>
+        <GameLeaderboard key={widget.gameId} widget={widget}/>
+      </div>
     ) : [];
 
     return (
-      <div>
-        <div className={styles.mainContainer} onClick={onClick}>
-          {leaderBoards}
-          click me
-        </div>
+      <div className={styles.mainContainer}>
+        {leaderBoards}
       </div>
     );
   }
@@ -36,9 +40,9 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    onClick: () => {
-      dispatch(fetchWidgets);
-    }
+    fetchWidgetsIfNeeded: () => {
+      dispatch(fetchWidgetsIfNeeded);
+    },
   };
 };
 

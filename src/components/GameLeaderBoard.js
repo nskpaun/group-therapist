@@ -19,8 +19,8 @@ class GameLeaderboard extends Component {
       <div>
         <BarChart
           data={data}
-          width={400}
-          height={400}
+          width={900}
+          height={500}
           margin={{top: 10, bottom: 50, left: 50, right: 10}}/>
       </div>
     );

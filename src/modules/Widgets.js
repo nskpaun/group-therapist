@@ -26,6 +26,16 @@ export function fetchWidgets(dispatch) {
   });
 }
 
+function shouldFetchWidgets(state) {
+  return !state.widgets.isFetching;
+}
+
+export function fetchWidgetsIfNeeded(dispatch, getState) {
+  if (shouldFetchWidgets(getState())) {
+    return dispatch(fetchWidgets);
+  }
+}
+
 // Reducer
 
 export const defaultState = {

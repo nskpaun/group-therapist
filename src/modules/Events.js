@@ -19,11 +19,20 @@ export function fetchEvents(dispatch) {
   dispatch(requestEvents());
   fetchCloudEvents((data, err) => {
     if (err) {
-      console.log("[fetchEvents] bummer...");
     } else {
       dispatch(receiveEvents(data));
     }
   });
+}
+
+function shouldFetchEvents(state) {
+  return !state.events.isFetching;
+}
+
+export function fetchEventsIfNeeded(dispatch, getState) {
+  if (shouldFetchEvents(getState())) {
+    return dispatch(fetchEvents);
+  }
 }
 
 // Reducer
